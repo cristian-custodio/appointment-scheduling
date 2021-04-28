@@ -1,0 +1,5 @@
+{
+  "db": "db",
+  "port": "5000",
+  "requiresAuth": true
+}
