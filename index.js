@@ -4,6 +4,8 @@ const config = require("config");
 const app = express();
 const path = require("path");
 
+require("./startup/logging")();
+
 const port = process.env.PORT || config.get("port");
 const server = app.listen(port, () =>
   winston.info(`Listening on port ${port}...`)
@@ -20,3 +22,4 @@ if (process.env.NODE_ENV === "production") {
 }
 
 module.exports = server;
+
