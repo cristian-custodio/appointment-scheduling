@@ -38,3 +38,22 @@
 #apppage h6 {
   line-height: 1.7;
 }
+
+.intro-subtitle {
+  font-size: 24px;
+}
+
+.icons {
+  background: white;
+}
+
+.icon-area .circle-icon i {
+  box-shadow: 0 8px 19px rgba(91, 154, 251, 0.41);
+  width: 100px;
+  height: 100px;
+  line-height: 1.4;
+  padding: 1.8rem;
+  font-size: 2rem;
+  border-radius: 50%;
+  background: #fff;
+}

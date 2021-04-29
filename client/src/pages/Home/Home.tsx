@@ -55,53 +55,6 @@ class Home extends React.Component {
     );
     return (
       <div id="apppage">
-        <Router>
-          <div>
-            <MDBNavbar
-              color="primary-color"
-              dark
-              expand="md"
-              fixed="top"
-              scrolling
-              transparent
-            >
-              <MDBContainer>
-                <MDBNavbarBrand>
-                  <strong className="white-text">Schdule Today</strong>
-                </MDBNavbarBrand>
-                <MDBNavbarToggler onClick={this.handleTogglerClick} />
-                <MDBCollapse isOpen={collapsed} navbar>
-                  <MDBNavbarNav left>
-                    <MDBNavItem active>
-                      <MDBNavLink to="#!">Home</MDBNavLink>
-                    </MDBNavItem>
-                    <MDBNavItem>
-                      <MDBNavLink to="#!">Link</MDBNavLink>
-                    </MDBNavItem>
-                    <MDBNavItem>
-                      <MDBNavLink to="#!">Profile</MDBNavLink>
-                    </MDBNavItem>
-                  </MDBNavbarNav>
-                  <MDBNavbarNav right>
-                    <MDBNavItem>
-                      <MDBFormInline waves>
-                        <div className="md-form my-0">
-                          <input
-                            className="form-control mr-sm-2"
-                            type="text"
-                            placeholder="Search"
-                            aria-label="Search"
-                          />
-                        </div>
-                      </MDBFormInline>
-                    </MDBNavItem>
-                  </MDBNavbarNav>
-                </MDBCollapse>
-              </MDBContainer>
-            </MDBNavbar>
-            {collapsed && overlay}
-          </div>
-        </Router>
         <MDBView>
           <MDBMask className="white-text gradient" />
           <MDBContainer
@@ -140,19 +93,94 @@ class Home extends React.Component {
           </MDBContainer>
         </MDBView>
 
-        <MDBContainer>
-          <MDBRow className="py-5">
-            <MDBCol md="12" className="text-center">
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum.
+        <MDBContainer id="awesome-features">
+          <MDBRow center>
+            {/* Section: Features v.4 */}
+
+            <section id="features" className="text-center my-5">
+              {/* Section heading */}
+              <h2
+                className="title font-weight-bold my-5 wow fadeIn"
+                data-wow-delay="0.2s"
+              >
+                <strong>Awesome Features</strong>
+              </h2>
+              {/* Section description */}
+              <p
+                className="grey-text w-responsive mx-auto mb-5 wow fadeIn"
+                data-wow-delay="0.2s"
+              >
+                Merchant pricing solutions enables your sales team to offer and
+                compare quotes within seconds. Let your team close the deal when
+                it's 'hot'. Its intuitive design allows even the most entry
+                level sales agent to calculate and accurately price deals at all
+                levels.
               </p>
-            </MDBCol>
+              {/* Grid row */}
+              <div className="row wow fadeIn" data-wow-delay="0.2s">
+                {/* Grid column */}
+                <div className="col-lg-4 text-center">
+                  <div className="icon-area">
+                    <div className="circle-icon">
+                      <i className="fas fa-calendar-check blue-text" />
+                    </div>
+                    <br />
+                    <h5 className="dark-grey-text font-weight-bold mt-2">
+                      Appointment Dashboard
+                    </h5>
+                    <div className="mt-1">
+                      <p className="mx-3 grey-text">
+                        View all your appointments in one place! This will help
+                        you be the most prepared!
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                {/* Grid column */}
+                {/* Grid column */}
+                <div className="col-lg-4 text-center">
+                  <div className="icon-area">
+                    <div className="circle-icon">
+                      <i className="fas fa-users blue-text" />
+                    </div>
+                    <br />
+                    <h5 className="dark-grey-text font-weight-bold mt-2">
+                      Unlimited Users
+                    </h5>
+                    <div className="mt-1">
+                      <p className="mx-3 grey-text">
+                        Register as many users as you want, for the whole
+                        family, we are here to serve.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                {/* Grid column */}
+                {/* Grid column */}
+                <div className="col-lg-4 text-center mb-4">
+                  <div className="icon-area">
+                    <div className="circle-icon">
+                      <i className="fas fa-list-ol blue-text" />
+                    </div>
+                    <br />
+                    <h5 className="dark-grey-text font-weight-bold mt-2">
+                      Classify Appointments
+                    </h5>
+                    <div className="mt-1">
+                      <p className="mx-3 grey-text">
+                        Classify the urgency of your appointments, and make sure
+                        you don't miss the important ones.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Grid column */}
+              </div>
+              {/* Grid row */}
+            </section>
+            {/* Section: Features v.4 */}
+            {/* Section: Pricing v.5 */}
           </MDBRow>
         </MDBContainer>
       </div>
