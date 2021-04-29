@@ -1,4 +1,12 @@
-#apppage .gradient {
+#loginformpage .view {
+  background-image: url("https://mdbootstrap.com/img/Photos/Others/images/89.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  min-height: 82vh;
+}
+
+#loginformpage  .gradient {
   background: -moz-linear-gradient(
     45deg,
     rgba(42, 27, 161, 0.7),
@@ -27,37 +35,15 @@
   );
 }
 
-#apppage .view {
-  background-image: url("https://mdbootstrap.com/img/Photos/Others/architecture.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  min-height: 100vh;
-}
 
-#apppage h6 {
+#loginformpage h6 {
   line-height: 1.7;
 }
 
-.intro-subtitle {
-  font-size: 24px;
+#loginformpage .form-check {
+  margin-bottom: 0 !important;
 }
 
-.icons {
-  background: white;
-}
-
-.icon-area .circle-icon i {
-  box-shadow: 0 8px 19px rgba(91, 154, 251, 0.41);
-  width: 100px;
-  height: 100px;
-  line-height: 1.4;
-  padding: 1.8rem;
-  font-size: 2rem;
-  border-radius: 50%;
-  background: #fff;
-}
-
-html{
-  scroll-behavior: smooth;
+.payment-list__item {
+  margin: 5px;
 }

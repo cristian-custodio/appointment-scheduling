@@ -73,8 +73,15 @@ class Home extends React.Component {
                     We are commited to providing you with top level appointment
                     scheduling on all your mobile devices. Join Today!
                   </h6>
-                  <MDBBtn color="info">Register</MDBBtn>
-                  <MDBBtn id="login" outline className="btn-outline-white">
+                  <MDBBtn href="/register" color="info">
+                    Register
+                  </MDBBtn>
+                  <MDBBtn
+                    href="/#awesome-features"
+                    id="login"
+                    outline
+                    className="btn-outline-white"
+                  >
                     Learn More
                   </MDBBtn>
                 </MDBAnimation>

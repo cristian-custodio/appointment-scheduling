@@ -4,7 +4,7 @@ import Input from "./input";
 import Select from "./select";
 
 class Form extends Component {
-  state = { data: {}, erros: {} };
+  state = { data: {}, errors: {} };
 
   validate = () => {
     const options = { abortEarly: false };

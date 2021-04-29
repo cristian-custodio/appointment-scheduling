@@ -1,64 +1,58 @@
-import React from "react";
-import Joi from "joi-browser";
+import React, { Component, useContext } from "react";
 import { Redirect } from "react-router-dom";
+import Joi from "joi-browser";
 import Form from "../common/form";
+import auth from "../../services/authService";
+import UserContext from "../../context/userContext";
+
 import {
-  MDBNavbarBrand,
-  MDBNavbarNav,
-  MDBNavItem,
-  MDBNavLink,
-  MDBNavbarToggler,
-  MDBCollapse,
   MDBMask,
   MDBRow,
   MDBCol,
-  MDBBtn,
   MDBView,
   MDBContainer,
-  MDBFormInline,
   MDBCard,
   MDBCardBody,
-  MDBInput,
   MDBModalFooter,
   MDBIcon,
   MDBCardHeader,
   MDBAnimation,
 } from "mdbreact";
-import "./RegisterUser.css";
+import "./Login.css";
 
-import * as userService from "../../services/userService";
-import auth from "../../services/authService";
 import Particles from "react-particles-js";
-import UserContext from "../../context/userContext";
 
-class Register extends Form {
+class LoginForm extends Form {
   static contextType = UserContext;
   state = {
-    data: {
-      firstName: "",
-      lastName: "",
-      email: "",
-      password: "",
-    },
+    data: { username: "", password: "" },
     errors: {},
   };
 
   schema = {
-    firstName: Joi.string().required().label("First Name"),
-    lastName: Joi.string().required().label("Last Name"),
-    email: Joi.string().email().required().label("Email "),
-    password: Joi.string().min(5).required().label("Password"),
+    username: Joi.string().required().label("Username"),
+    password: Joi.string().required().label("Password"),
   };
+
+  componentDidMount() {
+    console.log("", this.context);
+  }
 
   doSubmit = async () => {
     try {
-      const response = await userService.register(this.state.data);
-      auth.loginWithJwt(response.headers["x-auth-token"]);
-      window.location = "/";
+      const userContext = this.context;
+      const { data } = this.state;
+      await userContext.handleLogin(data.username, data.password);
+
+      const { state } = this.props.location;
+      window.location = state ? state.from.pathname : "/Dashboard";
     } catch (ex) {
+      console.log(ex.response);
       if (ex.response && ex.response.status === 400) {
+        console.log("THERE WAS AN ERROR");
+
         const errors = { ...this.state.errors };
-        errors.registerToken = ex.response.data;
+        // errors.username = ex.response.data;
         this.setState({ errors });
       }
     }
@@ -67,10 +61,12 @@ class Register extends Form {
   render() {
     const userContext = this.context;
     if (userContext.currentUser()) return <Redirect to="/Dashboard" />;
+
     return (
-      <div id="registerformpage">
+      <div id="loginformpage">
         <MDBView>
           <MDBMask className="white-text gradient">
+            {" "}
             <Particles
               params={{
                 particles: {
@@ -92,54 +88,24 @@ class Register extends Form {
               }}
             />
           </MDBMask>
-          <div>
-            <MDBContainer>
-              <MDBNavbarBrand>
-                <strong className="white-text">MDB</strong>
-              </MDBNavbarBrand>
-              <MDBNavbarToggler />
-              <MDBCollapse navbar>
-                <MDBNavbarNav left>
-                  <MDBNavItem active>
-                    <MDBNavLink to="#!">Home</MDBNavLink>
-                  </MDBNavItem>
-                  <MDBNavItem>
-                    <MDBNavLink to="#!">Link</MDBNavLink>
-                  </MDBNavItem>
-                  <MDBNavItem>
-                    <MDBNavLink to="#!">Profile</MDBNavLink>
-                  </MDBNavItem>
-                </MDBNavbarNav>
-                <MDBNavbarNav right>
-                  <MDBNavItem>
-                    <MDBFormInline waves>
-                      <div className="md-form my-0">
-                        <input
-                          className="form-control mr-sm-2"
-                          type="text"
-                          placeholder="Search"
-                          aria-label="Search"
-                        />
-                      </div>
-                    </MDBFormInline>
-                  </MDBNavItem>
-                </MDBNavbarNav>
-              </MDBCollapse>
-            </MDBContainer>
-          </div>
 
           <MDBContainer
-            style={{ height: "100%", width: "100%", paddingTop: "5rem" }}
+            style={{
+              height: "100%",
+              width: "100%",
+              paddingTop: "10rem",
+              paddingBottom: "10rem",
+            }}
             className="d-flex justify-content-center "
           >
             <MDBRow>
               <div className="white-text text-center text-md-left col-md-6 mt-xl-5 mb-5">
                 <MDBAnimation type="fadeInLeft" delay=".3s">
                   <img
-                    src="https://merchant-pricing-solutions.s3.amazonaws.com/register-people.png"
+                    src="https://merchant-pricing-solutions.s3.amazonaws.com/login-people-image.png"
                     className="img-fluid mx-auto"
                     alt="FaithConnect"
-                    width="250px"
+                    width="400px"
                   ></img>
                   {/* <h1 className="display-4 font-weight-bold">Login Portal </h1> */}
                   <hr className="hr-light" />
@@ -148,9 +114,9 @@ class Register extends Form {
                     We are commited to providing you with top level appointment
                     scheduling on all your mobile devices. Join Today!
                   </h6>
-                  <MDBBtn href="/#awesome-features" outline color="white">
-                    Learn More
-                  </MDBBtn>
+                  {/* <MDBBtn outline color="white">
+                  Learn More
+                </MDBBtn> */}
                 </MDBAnimation>
               </div>
 
@@ -158,7 +124,7 @@ class Register extends Form {
                 md="6"
                 xl="5"
                 className="mb-4"
-                style={{ paddingTop: "2rem" }}
+                style={{ paddingTop: "6rem" }}
               >
                 <MDBAnimation type="fadeInRight" delay=".3s">
                   <MDBCard>
@@ -168,39 +134,33 @@ class Register extends Form {
                         className="form-header rounded"
                       >
                         <h3 className="my-3">
-                          <MDBIcon icon="user-plus" /> Register
+                          <MDBIcon icon="lock" /> Login:
                         </h3>
                       </MDBCardHeader>
+
                       <form onSubmit={this.handleSubmit}>
                         <div className="grey-text">
-                          {this.renderInput("firstName", "First Name", "user")}
-                          {this.renderInput("lastName", "Last Name", "user")}
-                          {this.renderInput(
-                            "email",
-                            "Email",
-                            "envelope",
-                            "email"
-                          )}
+                          {this.renderInput("username", "Username", "envelope")}
                           {this.renderInput(
                             "password",
                             "Password",
                             "lock",
                             "password"
                           )}
-
-                          <div className="text-center pb-3">
-                            {this.renderButton("Register")}
-                          </div>
                         </div>
-                      </form>{" "}
+                        <div className="text-center pb-3">
+                          {this.renderButton("Login")}
+                        </div>
+                      </form>
+
                       <MDBModalFooter>
                         <p className="font-small grey-text d-flex justify-content-end">
-                          Already a Member?
+                          Not a member?
                           <a
-                            href="/Login"
+                            href="/register"
                             className="blue-text ml-1 text-center"
                           >
-                            Sign In
+                            Sign Up
                           </a>
                         </p>
                       </MDBModalFooter>
@@ -216,4 +176,4 @@ class Register extends Form {
   }
 }
 
-export default Register;
+export default LoginForm;
