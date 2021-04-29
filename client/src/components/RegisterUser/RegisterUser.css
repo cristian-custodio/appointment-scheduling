@@ -1,0 +1,19 @@
+#registerformpage .view {
+  background-image: url("https://mdbootstrap.com/img/Photos/Others/architecture.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  min-height: 100vh;
+}
+
+#registerformpage h6 {
+  line-height: 1.7;
+}
+
+#registerformpage .form-check {
+  margin-bottom: 0 !important;
+}
+
+.token {
+  color: red;
+}

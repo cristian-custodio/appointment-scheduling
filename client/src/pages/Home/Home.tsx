@@ -110,11 +110,9 @@ class Home extends React.Component {
                 className="grey-text w-responsive mx-auto mb-5 wow fadeIn"
                 data-wow-delay="0.2s"
               >
-                Merchant pricing solutions enables your sales team to offer and
-                compare quotes within seconds. Let your team close the deal when
-                it's 'hot'. Its intuitive design allows even the most entry
-                level sales agent to calculate and accurately price deals at all
-                levels.
+                Lets connect you with appointments that will help you soar! We
+                are commited to providing you with top level appointment
+                scheduling on all your mobile devices. Join Today!
               </p>
               {/* Grid row */}
               <div className="row wow fadeIn" data-wow-delay="0.2s">
