@@ -54,60 +54,23 @@ const Navbar = () => {
                       color="indigo"
                       className="dropdown-indigo mr-5"
                     >
-                      {/* If user is admin user */}
-                      {userContext.currentUser().role === 1 && (
-                        <React.Fragment>
-                          <MDBDropdownItem href="/Dashboard">
-                            <div style={{ fontWeight: "300" }}>Dashboard</div>
-                          </MDBDropdownItem>
-
-                          <MDBDropdownItem href="/Admin/Upload">
-                            <div style={{ fontWeight: "300" }}>
-                              Comparsion Settings
-                            </div>
-                          </MDBDropdownItem>
-
-                          <MDBDropdownItem href="/Admin/Settings">
-                            <div style={{ fontWeight: "300" }}>
-                              Cost Settings
-                            </div>
-                          </MDBDropdownItem>
-                          <MDBDropdownItem href={"/logout"}>
-                            <div style={{ fontWeight: "300" }}>Log Out</div>
-                          </MDBDropdownItem>
-                        </React.Fragment>
-                      )}
-
-                      {/* If user is support user */}
-                      {userContext.currentUser().role === 2 && (
-                        <React.Fragment>
-                          <MDBDropdownItem href="/Dashboard">
-                            <div style={{ fontWeight: "300" }}>Dashboard</div>
-                          </MDBDropdownItem>
-
-                          <MDBDropdownItem href={"/logout"}>
-                            <div style={{ fontWeight: "300" }}>Log Out</div>
-                          </MDBDropdownItem>
-                        </React.Fragment>
-                      )}
                       {/* If user is sales user (ISO Agent)*/}
-                      {userContext.currentUser().role === 3 && (
-                        <React.Fragment>
-                          <MDBDropdownItem href="/Dashboard">
-                            <div style={{ fontWeight: "300" }}>Dashboard</div>
-                          </MDBDropdownItem>
 
-                          <MDBDropdownItem href={"/logout"}>
-                            <div style={{ fontWeight: "300" }}>Log Out</div>
-                          </MDBDropdownItem>
-                        </React.Fragment>
-                      )}
+                      <React.Fragment>
+                        <MDBDropdownItem href="/Dashboard">
+                          <div style={{ fontWeight: "300" }}>Dashboard</div>
+                        </MDBDropdownItem>
+
+                        <MDBDropdownItem href={"/logout"}>
+                          <div style={{ fontWeight: "300" }}>Log Out</div>
+                        </MDBDropdownItem>
+                      </React.Fragment>
                     </MDBDropdownMenu>
                   </MDBDropdown>
                 </MDBNavItem>
                 <MDBNavItem>
                   <MDBNavLink to="#!">
-                    Hi, {userContext.currentUser().firstName}!
+                    Hi, {userContext.currentUser().email}!
                   </MDBNavLink>
                 </MDBNavItem>
               </MDBNavbarNav>

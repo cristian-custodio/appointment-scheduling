@@ -35,8 +35,6 @@ class Register extends Form {
   static contextType = UserContext;
   state = {
     data: {
-      firstName: "",
-      lastName: "",
       email: "",
       password: "",
     },
@@ -44,8 +42,6 @@ class Register extends Form {
   };
 
   schema = {
-    firstName: Joi.string().required().label("First Name"),
-    lastName: Joi.string().required().label("Last Name"),
     email: Joi.string().email().required().label("Email "),
     password: Joi.string().min(5).required().label("Password"),
   };
@@ -173,8 +169,6 @@ class Register extends Form {
                       </MDBCardHeader>
                       <form onSubmit={this.handleSubmit}>
                         <div className="grey-text">
-                          {this.renderInput("firstName", "First Name", "user")}
-                          {this.renderInput("lastName", "Last Name", "user")}
                           {this.renderInput(
                             "email",
                             "Email",
