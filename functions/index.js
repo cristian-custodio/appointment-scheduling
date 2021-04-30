@@ -46,6 +46,20 @@ admin.initializeApp();
 
   });
 
+  exports.updateAppointment = functions.https.onRequest(async(request, response) => {
+
+    let id = request.body.id;
+
+    const appointmentRef = admin.firestore().collection('Appointments').doc(id);
+
+          const res = await appointmentRef.set({
+            Status: request.body.status
+          }, { merge: true });
+              
+    response.send(res);
+
+  });
+
 //   exports.helloWorld = functions.https.onRequest((request, response) => {
 //   functions.logger.info("Hello logs!", {structuredData: true});
 //   response.send("Hello from Firebase!");
