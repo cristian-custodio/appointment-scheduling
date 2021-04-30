@@ -30,6 +30,22 @@ admin.initializeApp();
     response.send(appointments);
       });
 
+  exports.createAppointment = functions.https.onRequest(async(request, response) => {
+
+    const appointment = {
+      Date: request.body.Date,
+      Owner: request.body.Owner,
+      Requester: request.body.Requester,
+      Status: request.body.Status
+    };
+    
+    // // // Add a new document in collection "cities" with ID 'LA'
+    const res = await admin.firestore().collection('Appointments').add(appointment);
+
+    response.send(res);
+
+  });
+
 //   exports.helloWorld = functions.https.onRequest((request, response) => {
 //   functions.logger.info("Hello logs!", {structuredData: true});
 //   response.send("Hello from Firebase!");
