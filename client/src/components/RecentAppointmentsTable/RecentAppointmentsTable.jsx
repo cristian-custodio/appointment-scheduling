@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, Fragment } from "react";
 import UserContext from "../../context/userContext";
 import { getAllAppointments } from "../../services/appointmentService";
 import {
@@ -42,12 +42,12 @@ const RecentAppointmentsTable = () => {
   useEffect(() => {
     async function getAllAppointmentsData() {
       const recentQuotes = await getAllAppointments();
-      console.log(userContext.currentUser().email);
+      console.log(recentQuotes.data);
 
       let filteredAppointments = recentQuotes.data.filter(function (
         appointment
       ) {
-        return appointment.Owner == userContext.currentUser().email;
+        return appointment.data.Owner == userContext.currentUser().email;
       });
 
       //Filter appointments by logged in user email from recentQuotes.data
@@ -65,15 +65,32 @@ const RecentAppointmentsTable = () => {
 
     for (const appointment in data) {
       let tempQuote = {
-        appointmentDate: data[appointment].Date,
-        owner: data[appointment].Owner,
-        requesterEmail: data[appointment].Requester,
+        appointmentDate: data[appointment].data.Date,
+        owner: data[appointment].data.Owner,
+        requesterEmail: data[appointment].data.Requester,
         appointmentStatus:
-          data[appointment].Status === "pending" ? (
-            <strong style={{ color: "blue" }}>Pending</strong>
-          ) : data[appointment].Status === "confirmed" ? (
+          data[appointment].data.Status === "pending" ? (
+            <div>
+              <MDBRow className="text-center pb-1">
+                <MDBCol>
+                  <strong style={{ color: "blue", fontSize: "1.5em" }}>
+                    Pending
+                  </strong>
+                </MDBCol>
+              </MDBRow>
+
+              <Fragment>
+                <MDBBtn rounded color="primary">
+                  Confirm
+                </MDBBtn>
+                <MDBBtn rounded color="danger">
+                  Decline
+                </MDBBtn>
+              </Fragment>
+            </div>
+          ) : data[appointment].data.Status === "confirmed" ? (
             <strong style={{ color: "green" }}>Confirmed</strong>
-          ) : data[appointment].Status === "cancelled" ? (
+          ) : data[appointment].data.Status === "cancelled" ? (
             <strong style={{ color: "red" }}>Cancelled</strong>
           ) : (
             ""
