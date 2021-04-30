@@ -1,0 +1,40 @@
+#dashboard .gradient {
+  background: -moz-linear-gradient(
+    45deg,
+    rgba(42, 27, 161, 0.7),
+    rgba(29, 210, 177, 0.7) 100%
+  );
+  background: -webkit-linear-gradient(
+    45deg,
+    rgba(42, 27, 161, 0.7),
+    rgba(29, 210, 177, 0.7) 100%
+  );
+  background: -webkit-gradient(
+    linear,
+    45deg,
+    from(rgba(42, 27, 161, 0.7)),
+    to(rgba(29, 210, 177, 0.7))
+  );
+  background: -o-linear-gradient(
+    45deg,
+    rgba(42, 27, 161, 0.7),
+    rgba(29, 210, 177, 0.7) 100%
+  );
+  background: linear-gradient(
+    45deg,
+    rgba(42, 27, 161, 0.7),
+    rgba(29, 210, 177, 0.7) 100%
+  );
+}
+/* .table.table-hover tbody tr:hover {
+  background-color: #5366d1;
+  color: white !important;
+} */
+
+#dashboard #firstView {
+  background-image: url("https://mdbootstrap.com/img/Photos/Others/architecture.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  min-height: 100vh;
+}
