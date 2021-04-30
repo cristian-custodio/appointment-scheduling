@@ -11,5 +11,15 @@ router.get("/", async (req, res) => {
   res.send(appointments.data)
 });
 
+router.post("/confirm/:id", async (req, res) => {
+    let result = await axios.post("https://us-central1-appointment-scheduling-6e036.cloudfunctions.net/updateAppointment",{id: req.params.id, status: "confirmed"});
+    res.send(result.status);
+});
+
+router.post("/decline/:id", async (req, res) => {
+  let result = await axios.post("https://us-central1-appointment-scheduling-6e036.cloudfunctions.net/updateAppointment",{id: req.params.id, status: "declined"});
+  res.send(result.status);
+});
+
 
 module.exports = router;

@@ -1,19 +1,41 @@
 import React, { useState, useEffect, useContext, Fragment } from "react";
 import UserContext from "../../context/userContext";
-import { getAllAppointments } from "../../services/appointmentService";
+import {
+  getAllAppointments,
+  updateAppointmentConfirm,
+  updateAppointmentCancel,
+} from "../../services/appointmentService";
 import {
   MDBBtn,
   MDBCard,
   MDBCardBody,
   MDBCardHeader,
   MDBDataTableV5,
-  MDBBadge,
-  MDBCardTitle,
   MDBRow,
   MDBCol,
   MDBIcon,
   MDBContainer,
 } from "mdbreact";
+
+async function confirmAppointment(appointmentId) {
+  //Call service to call firebase function
+  let result = updateAppointmentConfirm(appointmentId);
+  if (!result) {
+    alert("An error has occured");
+  } else {
+    window.location.reload();
+  }
+}
+
+async function cancelAppointment(appointmentId) {
+  //Call service to call firebase function
+  let result = updateAppointmentCancel(appointmentId);
+  if (!result) {
+    alert("An error has occured");
+  } else {
+    window.location.reload();
+  }
+}
 
 const RecentAppointmentsTable = () => {
   const userContext = useContext(UserContext);
@@ -72,26 +94,68 @@ const RecentAppointmentsTable = () => {
           data[appointment].data.Status === "pending" ? (
             <div>
               <MDBRow className="text-center pb-1">
-                <MDBCol>
-                  <strong style={{ color: "blue", fontSize: "1.5em" }}>
-                    Pending
-                  </strong>
-                </MDBCol>
+                <MDBCol></MDBCol>
               </MDBRow>
 
               <Fragment>
-                <MDBBtn rounded color="primary">
-                  Confirm
+                <strong
+                  className="mr-2"
+                  style={{ color: "blue", fontSize: "1.5em" }}
+                >
+                  Pending
+                </strong>
+                <MDBBtn
+                  onClick={() => confirmAppointment(data[appointment].id)}
+                  tag="a"
+                  size="sm"
+                  floating
+                  gradient="blue"
+                  className="mr-2"
+                >
+                  <MDBIcon icon="check" />
                 </MDBBtn>
-                <MDBBtn rounded color="danger">
-                  Decline
+
+                <MDBBtn
+                  onClick={() => cancelAppointment(data[appointment].id)}
+                  tag="a"
+                  size="sm"
+                  floating
+                  gradient="purple"
+                >
+                  <MDBIcon icon="ban" />
                 </MDBBtn>
               </Fragment>
             </div>
           ) : data[appointment].data.Status === "confirmed" ? (
-            <strong style={{ color: "green" }}>Confirmed</strong>
-          ) : data[appointment].data.Status === "cancelled" ? (
-            <strong style={{ color: "red" }}>Cancelled</strong>
+            <div>
+              <Fragment>
+                <strong className="mr-2" style={{ color: "green" }}>Confirmed</strong>
+                <MDBBtn
+                  onClick={() => cancelAppointment(data[appointment].id)}
+                  tag="a"
+                  size="sm"
+                  floating
+                  gradient="purple"
+                >
+                  <MDBIcon icon="ban" />
+                </MDBBtn>
+              </Fragment>
+            </div>
+          ) : data[appointment].data.Status === "declined" ? (
+            <div>
+            <Fragment>
+              <strong className="mr-3" style={{ color: "red" }}>Declined</strong>
+              <MDBBtn
+                onClick={() => confirmAppointment(data[appointment].id)}
+                tag="a"
+                size="sm"
+                floating
+                gradient="blue"
+              >
+                <MDBIcon icon="check" />
+              </MDBBtn>
+            </Fragment>
+          </div>
           ) : (
             ""
           ),
