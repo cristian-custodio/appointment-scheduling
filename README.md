@@ -8,7 +8,7 @@ Main Application Goal: Allows a user to schedule an appointment time with anothe
 
 # Live app deployed on heroku
 
-- https://www.google.com
+https://coming soon
 
 # Local installation instructions
 
@@ -30,3 +30,7 @@ Main Application Goal: Allows a user to schedule an appointment time with anothe
 | ![alt text](https://github.com/cristian-custodio/appointment-scheduling/blob/main/client/public/3.png) | ![alt text](https://github.com/cristian-custodio/appointment-scheduling/blob/main/client/public/5.png) |
 
 # Video Demo
+
+https://user-images.githubusercontent.com/30705878/116790972-33b7fc00-aa85-11eb-9a9e-d6c155d6baaf.mp4
+
+
