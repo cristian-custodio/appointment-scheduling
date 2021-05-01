@@ -4,6 +4,7 @@ const config = require("config");
 const app = express();
 const path = require("path");
 
+require("./startup/cors")(app);
 require("./startup/routes")(app);
 require("./startup/logging")();
 require("./startup/db")();
