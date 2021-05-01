@@ -30,5 +30,12 @@ router.post("/", async (req, res) => {
     .send(_.pick(user, ["uid", "email"]));
 });
 
+router.get("/all", async(req,res)=>{
+
+let users = await firebase.auth().listUsers(100);
+res.send(users)
+
+});
+
 
 module.exports = router;

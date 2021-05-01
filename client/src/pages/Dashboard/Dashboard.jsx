@@ -1,6 +1,7 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import UserContext from "../../context/userContext";
 import auth from "../../services/authService";
+
 import "./Dashboard.css";
 import { Redirect } from "react-router-dom";
 import RecentAppointmentsTable from "../../components/RecentAppointmentsTable";
@@ -20,6 +21,9 @@ import {
 
 const Dashboard = () => {
   const userContext = useContext(UserContext);
+
+
+
 
   if (!auth.getCurrentUser()) return <Redirect to={"/Login"} />;
 

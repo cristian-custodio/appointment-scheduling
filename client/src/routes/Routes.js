@@ -5,6 +5,7 @@ import Register from "../pages/Register/index";
 import Login from "../components/LoginUser/index";
 import Logout from "../components/Logout/index";
 import Dashboard from "../pages/Dashboard/index"
+import Appointment from "../pages/Appointment/index"
 
 
 class Routes extends React.Component {
@@ -16,6 +17,7 @@ class Routes extends React.Component {
         <Route exact path="/Login" component={Login} />
         <Route exact path="/Logout" component={Logout} />
         <Route exact path="/Dashboard" component={Dashboard} />
+        <Route exact path="/Appointment/New" component={Appointment} />
       </Switch>
     );
   }

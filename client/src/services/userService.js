@@ -8,3 +8,8 @@ export function register(user) {
     password: user.password,
   });
 }
+
+export function getAllUsers() {
+  return http.get(apiEndpoint + "/all")
+}
+

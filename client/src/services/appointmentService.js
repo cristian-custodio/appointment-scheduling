@@ -15,7 +15,7 @@ export function updateAppointmentCancel(id) {
 }
 
 export function registerAppointment(json) {
-  return http.post(apiEndPoint, json, {
+  return http.post(apiEndPoint + "/", json, {
     headers: { "Content-Type": "application/json" },
   });
 }

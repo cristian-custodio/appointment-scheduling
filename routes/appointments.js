@@ -21,5 +21,10 @@ router.post("/decline/:id", async (req, res) => {
   res.send(result.status);
 });
 
+router.post("/", async (req,res) => {
+  let result = await axios.post("https://us-central1-appointment-scheduling-6e036.cloudfunctions.net/createAppointment", req.body)
+  res.send(result.status);
+})
+
 
 module.exports = router;
