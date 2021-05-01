@@ -4,13 +4,15 @@ Lets connect you with appointments that will help you soar! We are commited to p
 
 Web application was built using React/Node utilizing Firebase Functions to access Read/Write Firestore database operations. Login was simulated using JSON Web Tokens and the Firebase Admin SDK.
 
+Main Application Goal: Allows a user to schedule an appointment time with another user, and for that other user to accept, decline, and view their appointments.
+
 # Live app deployed on heroku
 
 - https://www.google.com
 
 # Local installation instructions
 
-1. clone Repository
+1. clone repository
 2. yarn install
 3. cd client
 4. yarn install
@@ -18,9 +20,9 @@ Web application was built using React/Node utilizing Firebase Functions to acces
 
 # Software Architecture Diagram
 
-- Image for architecture goes here
+![alt text](https://github.com/cristian-custodio/appointment-scheduling/blob/main/client/public/architecture-diagram.png)
 
-# Screenshot
+# Screenshots
 
 |                                               Screenshot                                               |                                               Screenshot                                               |
 | :----------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------: |
