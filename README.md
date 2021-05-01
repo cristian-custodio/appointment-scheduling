@@ -24,8 +24,8 @@ Web application was built using React/Node utilizing Firebase Functions to acces
 
 |                                               Screenshot                                               |                                               Screenshot                                               |
 | :----------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------: |
-| ![alt text](https://github.com/cristian-custodio/appointment-scheduling/blob/master/client/public/1.png) | ![alt text](https://github.com/cristian-custodio/appointment-scheduling/blob/master/client/public/2.png) |
-| ![alt text](https://github.com/cristian-custodio/appointment-scheduling/blob/master/client/public/3.png) | ![alt text](https://github.com/cristian-custodio/appointment-scheduling/blob/master/client/public/4.png) |
-| ![alt text](https://github.com/cristian-custodio/appointment-scheduling/blob/master/client/public/5.png) |
+| ![alt text](https://github.com/cristian-custodio/appointment-scheduling/blob/main/client/public/1.png) | ![alt text](https://github.com/cristian-custodio/appointment-scheduling/blob/main/client/public/2.png) |
+| ![alt text](https://github.com/cristian-custodio/appointment-scheduling/blob/main/client/public/3.png) | ![alt text](https://github.com/cristian-custodio/appointment-scheduling/blob/main/client/public/4.png) |
+| ![alt text](https://github.com/cristian-custodio/appointment-scheduling/blob/main/client/public/5.png) |
 
 # Video Demo
