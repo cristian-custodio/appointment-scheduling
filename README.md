@@ -8,7 +8,7 @@ Main Application Goal: Allows a user to schedule an appointment time with anothe
 
 # Live app deployed on heroku
 
-https://dashboard.heroku.com/apps/appointment-scheduler-2
+https://appointment-scheduler-2.herokuapp.com/
 
 # Local installation instructions
 
