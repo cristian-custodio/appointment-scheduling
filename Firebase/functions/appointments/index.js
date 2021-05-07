@@ -1,0 +1,2 @@
+require('./Nurses');
+require('./Users');

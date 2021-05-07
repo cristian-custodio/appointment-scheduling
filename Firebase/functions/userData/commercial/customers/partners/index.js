@@ -1,0 +1,4 @@
+require('./administrators/');
+require('./registeredNurses/')
+
+
